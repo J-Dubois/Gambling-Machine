@@ -41,43 +41,43 @@ def get_slot_machin_spin(rows, cols, symbols):
     for _ in range(symbol_count):
       all_symbols.append(symbol)
 
-  columns = []                                                                                                 # we define our columns list
-  for _ in range(cols):                                                                                        # we generate a column for every single column we have
-    column = []                                                                                           # Here we will be picking randoms values for each rows of our columns
-    current_symbols = all_symbols[:]    # [:] allow you to copy a list (here all_symbols)                      # we loop throught 
-    for _ in range(rows):                                                                                      # we loop throught the number of value that we need to generate (= to number of rows in our slot machine)
-      value = random.choice(current_symbols)                                                                   # the first value we get is random from current_symbols list (= copy of all_symbols list)
-      current_symbols.remove(value)     # find first instance of this value in the list and remove it          # we remove the random value so that we don't pick it again
-      column.append(value)                                                                                # we adde this value to our column
+  columns = []                                                                                                 # We define our columns list
+  for _ in range(cols):                                                                                        # We generate a column for every single column we have
+    column = []                                                                                                # Here we will be picking randoms values for each rows of our columns
+    current_symbols = all_symbols[:]                                                                           # [:] allow you to copy a list (here all_symbols)
+    for _ in range(rows):                                                                                      # We loop throught the number of value that we need to generate (= to number of rows in our slot machine)
+      value = random.choice(current_symbols)                                                                   # The first value we get is random from current_symbols list (= copy of all_symbols list)
+      current_symbols.remove(value)                                                                            # Find first instance of this value in the list and remove it. We remove the random value so that we don't pick it again
+      column.append(value)                                                                                     # We adde this value to our column
 
-    columns.append(column)                                                                                # once we have all our rows, we add our column to our column list
+    columns.append(column)                                                                                     # Once we have all our rows, we add our column to our column list
 
   return columns
 
 # to print the column vertically we need to do a "transposing"
-def print_slot_machine(columns):                          # we loop through every single row that we have
-  for row in range(len(columns[0])):                      # we every single row we loop through every single column
-    for i, column in enumerate(columns):                  # and for every column we only print the current row that we're on, this will basically flips our columns for begin horizontal to vertical100
+def print_slot_machine(columns):                                                                               # We loop through every single row that we have
+  for row in range(len(columns[0])):                                                                           # We every single row we loop through every single column
+    for i, column in enumerate(columns):                                                                       # And for every column we only print the current row that we're on, this will basically flips our columns for begin horizontal to vertical100
       if i != len(columns) - 1:
-        print(column[row], end=" | ")                     # end=  is the new line statement (normally end="\n")
+        print(column[row], end=" | ")                                                                          # End=  is the new line statement (normally end="\n")
       else:
         print(column[row], end=" | ")
-    print()                                               # we print an empty spot to launch the next line
+    print()                                                                                                    # We print an empty spot to launch the next line
 
 # USER DEPOSIT
-def deposit():  #Here we create the function "deposit" which will be the user deposit to play the game
-  while True:   #we create a loop so that until a valid amount is put in, the system will ask again
-    amount = input("How much do you want to deposit ? $")   #Here the user will put an amount of his choice
-    if amount.isdigit():   # For it to work we need the amount to be valid digit (no strings or negative numbers) is.digit is used for that
-      amount = int(amount)   # By default, the amount will be in string, but to work we need to put it in int
+def deposit():                                                                                                 # Here we create the function "deposit" which will be the user deposit to play the game
+  while True:                                                                                                  # We create a loop so that until a valid amount is put in, the system will ask again
+    amount = input("How much do you want to deposit ? $")                                                      # Here the user will put an amount of his choice
+    if amount.isdigit():                                                                                       # For it to work we need the amount to be valid digit (no strings or negative numbers) is.digit is used for that
+      amount = int(amount)                                                                                     # By default, the amount will be in string, but to work we need to put it in int
       if amount > 0:    
-        break    # if amount is more than 0 the loop will stop
+        break                                                                                                  # If amount is more than 0 the loop will stop
       else:
         print("Amount must be greater than 0.")
     else:
       print("Please enter a number.")
 
-  return amount   # it will indiquate us the amount and stop this function
+  return amount                                                                                                # It will indiquate us the amount and stop this function
 
 
 def getLineNumber():
